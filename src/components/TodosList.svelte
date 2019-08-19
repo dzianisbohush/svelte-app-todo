@@ -2,12 +2,14 @@
   import { afterUpdate } from "svelte";
   import TodoItem from "./TodoItem.svelte";
 
-  export let notComplitedItems;
-  export let complitedItems;
+  export let todoItems;
   export let addTodo;
   export let newTodo;
   export let toggleDone;
   export let deleteTodo;
+
+  $: notComplitedItems = todoItems.filter(item => !item.checked);
+  $: complitedItems = todoItems.filter(item => item.checked);
 </script>
 
 <form on:submit|preventDefault={addTodo}>

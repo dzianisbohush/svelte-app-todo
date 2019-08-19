@@ -20,33 +20,21 @@
 
     todoItems = [...todoItems, todo];
     newTodo = "";
-
-    getComplitedItems();
   };
 
   const toggleDone = id => {
     const index = todoItems.findIndex(item => item.id === Number(id));
     todoItems[index].checked = !todoItems[index].checked;
-
-    getComplitedItems();
   };
 
   const deleteTodo = id => {
     todoItems = todoItems.filter(item => item.id !== Number(id));
-
-    getComplitedItems();
-  };
-
-  const getComplitedItems = () => {
-    notComplitedItems = todoItems.filter(item => !item.checked);
-    complitedItems = todoItems.filter(item => item.checked);
   };
 </script>
 
 <div>
   <TodosList
-    {notComplitedItems}
-    {complitedItems}
+    {todoItems}
     {addTodo}
     {toggleDone}
     {deleteTodo}
